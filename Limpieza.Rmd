@@ -1,0 +1,311 @@
+
+20180648
+Jimena Soledad Felipe Amado 
+DATAS DE INVERSION Y GASTOS EN SALUD 
+
+```{r}
+library(htmltab)
+library(rio)
+```
+
+1.Gasto sanitario del gobierno general nacional (% del gasto sanitario corriente)
+
+Proporción de gastos sanitarios corrientes financiados con fuentes públicas nacionales para la salud. Las fuentes públicas nacionales incluyen ingresos nacionales como transferencias y subvenciones internas, transferencias, subsidios a los beneficiarios de seguros de salud voluntarios, instituciones sin fines de lucro al servicio de los hogares (ISFLSH) o esquemas de financiamiento empresarial, así como el pago anticipado obligatorio y las contribuciones al seguro social de salud. No incluyen los recursos externos gastados por los gobiernos en salud.
+```{r} 
+#SCRAPPING
+Gscorriente="https://github.com/jimenafelipe/TRABAJO1/raw/master/GastoPSalud.csv"
+Gscorriente=import(Gscorriente)
+#Verificando:
+dim(Gscorriente) #filas, columnas
+```
+LIMPIEZA 
+```{r}
+library(stringr)
+```
+
+eliminando columnas que no usaremos 
+```{r}
+Gscorriente[,c(1,2)]=NULL
+Gscorriente[,c(2:10)]=NULL
+Gscorriente[,c(3:5)]=NULL
+```
+
+
+```{r}
+Gscorriente[2]=replace(Gscorriente[2], Gscorriente[2]=="..",NA)
+```
+
+```{r}
+#cambio de nombre
+names(Gscorriente) = c("Country", "Domestic_general_government_health_expenditure")
+``` 
+
+```{r}
+Gscorriente$Domestic_general_government_health_expenditure=as.numeric(Gscorriente$Domestic_general_government_health_expenditure)
+str(Gscorriente)
+```
+```{r}
+Gscorriente = Gscorriente[-c(218:269),] 
+```
+
+```{r}
+Gscorriente[104, 1]='North Korea'
+Gscorriente[14, 1]='Bahamas'
+Gscorriente[72, 1]='Gambia'
+Gscorriente[59,1]='Egypt'
+Gscorriente[87, 1]='Hong Kong'
+Gscorriente[118, 1]='Macao'
+Gscorriente[129,1]='Micronesia'
+Gscorriente[173, 1]='Sint Maarten'
+Gscorriente[184,1]='St. Martin'
+Gscorriente[213,1]='Virgin Islands'
+Gscorriente[211,1]='Venezuela'
+Gscorriente[215,1]='Yemen'
+Gscorriente[108,1]='Kyrgyz'
+Gscorriente[92,1]='Iran'
+```
+
+
+```{r}
+write.csv(Gscorriente,"Gscorriente.csv", row.names = F)
+```
+
+2.GASTO PUBLICO SALUD 
+El Gasto Público en Salud está formado por aquellos gastos recurrentes y de capital provenientes del sector público destinados a la prestación de servicios de salud. En la tabla publicamos el gasto público en salud, es decir, el que dedican los organismos públicos de cada país a la sanidad.
+
+```{r}
+linkGpublico="https://countryeconomy.com/government/expenditure/health"
+pathGpublico='//*[@id="tb1"]'
+Gpublico=htmltab(linkGpublico,pathGpublico)
+```
+
+LIMPIEZA
+eliminando columnas que no usaremos 
+```{r}
+Gpublico[,c(2:4)]=NULL
+Gpublico[,c(3:7)]=NULL
+```
+
+
+```{r}
+#cambio de nombre
+names(Gpublico) = c("Country", "Government_Health_expenditure")
+```
+
+
+```{r}
+Gpublico$Country=str_split(string = Gpublico$Country,
+                pattern = '\\[',
+                simplify = T)[,1]
+row.names(Gpublico)=NULL
+```
+
+```{r}
+Gpublico$`Government_Health_expenditure`=gsub(',',"",Gpublico$`Government_Health_expenditure`)
+```
+
+```{r}
+Gpublico$`Government_Health_expenditure`=as.numeric(Gpublico$`Government_Health_expenditure`)
+```
+
+```{r}
+Gpublico[40, 1]='Congo, Dem. Rep.'
+Gpublico[42,1]='Congo, Rep.'
+```
+
+```{r}
+Gpublico$Country=str_trim(Gpublico$Country) 
+
+```
+
+
+```{r}
+write.csv(Gpublico,"Gpublico.csv", row.names = F)
+```
+
+
+3. Gasto corriente en salud (% del PIB)
+Las estimaciones de los gastos sanitarios actuales incluyen los bienes y servicios sanitarios consumidos durante cada año. Este indicador no incluye los gastos de capital en salud tales como edificios, maquinaria, TI y existencias de vacunas para emergencias o brotes.
+```{r}
+GPBI="https://github.com/jimenafelipe/TRABAJO1/raw/master/Gastoen%25PBI.csv"
+GPBI=import(GPBI)
+#Verificando:
+dim(GPBI) #filas, columnas
+```
+eliminando columnas que no usaremos 
+```{r}
+GPBI[,c(1,2)]=NULL
+GPBI[,c(2:10)]=NULL
+GPBI[,c(3:5)]=NULL
+```
+
+
+```{r}
+GPBI[2]=replace(GPBI[2], GPBI[2]=="..",NA)
+```
+
+
+cambio de nombre
+```{r}
+names(GPBI) = c("Country", "Current_health_expenditure")
+```
+
+```{r}
+GPBI$`Current_health_expenditure`=as.numeric(GPBI$`Current_health_expenditure`)
+```
+
+```{r}
+GPBI = GPBI[-c(218:269),] 
+```
+
+```{r}
+GPBI[104, 1]='North Korea'
+GPBI[14, 1]='Bahamas'
+GPBI[72, 1]='Gambia'
+GPBI[59,1]='Egypt'
+GPBI[87, 1]='Hong Kong'
+GPBI[118, 1]='Macao'
+GPBI[129,1]='Micronesia'
+GPBI[173, 1]='Sint Maarten'
+GPBI[184,1]='St. Martin'
+GPBI[213,1]='Virgin Islands'
+GPBI[211,1]='Venezuela'
+GPBI[215,1]='Yemen'
+GPBI[108,1]='Kyrgyz'
+GPBI[92,1]='Iran'
+
+
+
+```
+
+
+```{r}
+write.csv(GPBI,"GPBI.csv", row.names = F)
+```
+
+
+
+4. Gasto de bolsillo (% del gasto sanitario corriente)
+Proporción de los pagos de bolsillo del total de los gastos sanitarios corrientes. Los pagos de bolsillo son los gastos de salud que los hogares pagan directamente de su bolsillo
+
+```{r}
+Gbolsillo="https://github.com/jimenafelipe/TRABAJO1/raw/master/Gasto%20de%20bolsillo.csv"
+Gbolsillo=import(Gbolsillo)
+#verificando
+dim(Gbolsillo)
+```
+
+LIMPIEZA
+eliminando columnas que no usaremos 
+
+```{r}
+Gbolsillo[,c(1,2)]=NULL
+Gbolsillo[,c(2:10)]=NULL
+Gbolsillo[,c(3:5)]=NULL
+```
+
+```{r}
+Gbolsillo[2]=replace(Gbolsillo[2], Gbolsillo[2]=="..",NA)
+```
+
+
+cambio de nombre
+```{r}
+names(Gbolsillo) = c("Country", "Out_of_pocket_health_expenditure")
+```
+
+```{r}
+Gbolsillo$`Out_of_pocket_health_expenditure`=as.numeric(Gbolsillo$Out_of_pocket_health_expenditure) 
+```
+
+```{r}
+Gbolsillo = Gbolsillo[-c(218:269),] 
+```
+
+```{r}
+Gbolsillo[104, 1]='North Korea'
+Gbolsillo[14, 1]='Bahamas'
+Gbolsillo[72, 1]='Gambia'
+Gbolsillo[59,1]='Egypt'
+Gbolsillo[87, 1]='Hong Kong'
+Gbolsillo[118, 1]='Macao'
+Gbolsillo[129,1]='Micronesia'
+Gbolsillo[173, 1]='Sint Maarten'
+Gbolsillo[184,1]='St. Martin'
+Gbolsillo[213,1]='Virgin Islands'
+Gbolsillo[211,1]='Venezuela'
+Gbolsillo[215,1]='Yemen'
+Gbolsillo[108,1]='Kyrgyz'
+Gbolsillo[92,1]='Iran'
+```
+
+
+```{r}
+write.csv(Gbolsillo,"Gbolsillo.csv", row.names = F)
+```
+
+
+5.Índice de cobertura de servicios UHC
+Índice de cobertura de los servicios de salud esenciales (basado en intervenciones de seguimiento que incluye enfermedades infecciosas, entre otras y capacidad y acceso al servicio). Se presenta en una escala de 0 a 100.
+```{r}
+cobertura="https://github.com/jimenafelipe/TRABAJO1/raw/master/Indice%20de%20servicios%20UHC.csv"
+cobertura=import(cobertura)
+#verificando
+dim(cobertura)
+```
+LIMPIEZA
+
+eliminando columnas que no usaremos 
+```{r}
+cobertura[,c(1,2)]=NULL
+cobertura[,c(2:10)]=NULL
+cobertura[,c(3:5)]=NULL
+```
+
+```{r}
+cobertura[2]=replace(cobertura[2], cobertura[2]=="..",NA)
+```
+
+```{r}
+#cambio de nombre
+names(cobertura) = c("Country", "UHC_service_coverage_index")
+```
+
+```{r}
+cobertura$UHC_service_coverage_index=as.numeric(cobertura$UHC_service_coverage_index)
+```
+
+```{r}
+cobertura = cobertura[-c(218:269),] 
+```
+
+```{r}
+cobertura[104, 1]='North Korea'
+cobertura[14, 1]='Bahamas'
+cobertura[72, 1]='Gambia'
+cobertura[59,1]='Egypt'
+cobertura[87, 1]='Hong Kong'
+cobertura[118, 1]='Macao'
+cobertura[129,1]='Micronesia'
+cobertura[173, 1]='Sint Maarten'
+cobertura[184,1]='St. Martin'
+cobertura[213,1]='Virgin Islands'
+cobertura[211,1]='Venezuela'
+cobertura[215,1]='Yemen'
+cobertura[108,1]='Kyrgyz'
+cobertura[92,1]='Iran'
+```
+
+
+```{r}
+write.csv(cobertura,"cobertura.csv", row.names = F)
+```
+
+
+
+
+
+
+
+
+

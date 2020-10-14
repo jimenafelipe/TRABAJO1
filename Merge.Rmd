@@ -5,7 +5,7 @@ LINKS
 ```{r}
 LGscorriente="https://github.com/jimenafelipe/TRABAJO1/raw/master/Gscorriente.csv"
 
-LGpublico="https://github.com/jimenafelipe/TRABAJO1/raw/master/Gpublico.csv"
+LGHealthExp="https://github.com/jimenafelipe/TRABAJO1/raw/master/GovernmentHealthExp.csv"
 
 LGPBI="https://github.com/jimenafelipe/TRABAJO1/raw/master/GPBI.csv"
 
@@ -17,7 +17,7 @@ Lcobertura="https://github.com/jimenafelipe/TRABAJO1/raw/master/cobertura.csv"
 Cargas
 ```{r}
 Gscorriente=read.csv(LGscorriente,stringsAsFactors = F)
-Gpublico=read.csv(LGpublico,stringsAsFactors = F)
+GHealthExp=read.csv(LGHealthExp,stringsAsFactors = F)
 GPBI=read.csv(LGPBI,stringsAsFactors = F)
 Gbolsillo=read.csv(LGbolsillo,stringsAsFactors = F)
 cobertura=read.csv(Lcobertura,stringsAsFactors = F)
@@ -28,7 +28,7 @@ names(Gbolsillo)
 names(cobertura)
 names(GPBI)
 names(Gscorriente)
-names(Gpublico)
+names(GHealthExp)
 ```
 
 
@@ -39,5 +39,11 @@ totalData=merge(Gscorriente,GPBI,all.x = T, all.y = T)
 totalData=merge(totalData,Gbolsillo,all.x = T, all.y = T)
 #totalData[!complete.cases(totalData),]
 totalData=merge(totalData,cobertura,all.x = T, all.y = T)
-totalData=merge(totalData,Gpublico,all.x = T, all.y = T)
+totalData=merge(totalData,GHealthExp,all.x = T, all.y = T)
+
 ```
+
+```{r}
+totalData=na.omit(totalData)
+```
+

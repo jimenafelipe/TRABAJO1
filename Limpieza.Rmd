@@ -63,6 +63,14 @@ Gscorriente[211,1]='Venezuela'
 Gscorriente[215,1]='Yemen'
 Gscorriente[108,1]='Kyrgyz'
 Gscorriente[92,1]='Iran'
+Gscorriente[162,1]='Russia'
+Gscorriente[29,1]='Brunei'
+Gscorriente[108,1]='Kyrgyzstan'
+Gscorriente[190,1]='Syria'
+Gscorriente[174,1]='Slovakia'
+Gscorriente[136,1]='Burma'
+Gscorriente[105,1]='South Korea'
+
 ```
 
 
@@ -70,57 +78,68 @@ Gscorriente[92,1]='Iran'
 write.csv(Gscorriente,"Gscorriente.csv", row.names = F)
 ```
 
-2.GASTO PUBLICO SALUD 
+2.Exp. Sanitario del gobernador ordenador personal
 El Gasto Público en Salud está formado por aquellos gastos recurrentes y de capital provenientes del sector público destinados a la prestación de servicios de salud. En la tabla publicamos el gasto público en salud, es decir, el que dedican los organismos públicos de cada país a la sanidad.
 
 ```{r}
-linkGpublico="https://countryeconomy.com/government/expenditure/health"
-pathGpublico='//*[@id="tb1"]'
-Gpublico=htmltab(linkGpublico,pathGpublico)
+linkGHealthExp="https://countryeconomy.com/government/expenditure/health"
+pathGHealthExp='//*[@id="tb1"]'
+GHealthExp=htmltab(linkGHealthExp,pathGHealthExp)
 ```
 
 LIMPIEZA
 eliminando columnas que no usaremos 
 ```{r}
-Gpublico[,c(2:4)]=NULL
-Gpublico[,c(3:7)]=NULL
+GHealthExp[,c(2:8)]=NULL
+GHealthExp[,c(3)]=NULL
 ```
 
 
 ```{r}
 #cambio de nombre
-names(Gpublico) = c("Country", "Government_Health_expenditure")
+names(GHealthExp) = c("Country", "GovernmentHealthExp.P.C")
 ```
 
 
 ```{r}
-Gpublico$Country=str_split(string = Gpublico$Country,
+GHealthExp$Country=str_split(string = GHealthExp$Country,
                 pattern = '\\[',
                 simplify = T)[,1]
-row.names(Gpublico)=NULL
+row.names(GHealthExp)=NULL
 ```
 
 ```{r}
-Gpublico$`Government_Health_expenditure`=gsub(',',"",Gpublico$`Government_Health_expenditure`)
+GHealthExp$GovernmentHealthExp.P.C=gsub(',',"",GHealthExp$GovernmentHealthExp.P.C)
+GHealthExp$GovernmentHealthExp.P.C=gsub(',|\\$',"",GHealthExp$GovernmentHealthExp.P.C)
 ```
 
 ```{r}
-Gpublico$`Government_Health_expenditure`=as.numeric(Gpublico$`Government_Health_expenditure`)
+GHealthExp$GovernmentHealthExp.P.C=as.numeric(GHealthExp$GovernmentHealthExp.P.C)
 ```
 
 ```{r}
-Gpublico[40, 1]='Congo, Dem. Rep.'
-Gpublico[42,1]='Congo, Rep.'
+GHealthExp[117, 1]='Burma'
+GHealthExp[40, 1]='Congo, Dem. Rep.'
+GHealthExp[42,1]='Congo, Rep.'
+GHealthExp[94,1]='St. Kitts and Nevis'
+GHealthExp[101,1]='St. Lucia'
+GHealthExp[184,1]='St. Vincent and the Grenadines'
+GHealthExp[51,1]='Cabo Verde'
+GHealthExp[66,1]='Micronesia'
+GHealthExp[44,1]="Cote d'Ivoire"
+GHealthExp[167,1]='Eswatini' 
+GHealthExp[99,1]='Lao PDR' 
+GHealthExp[71,1]='Gambia' 
+
 ```
 
 ```{r}
-Gpublico$Country=str_trim(Gpublico$Country) 
-
+GHealthExp$Country=str_trim(GHealthExp$Country) 
 ```
 
 
 ```{r}
-write.csv(Gpublico,"Gpublico.csv", row.names = F)
+write.csv(GHealthExp,"GovernmentHealthExp.csv", row.names = F)
 ```
 
 
@@ -173,9 +192,13 @@ GPBI[211,1]='Venezuela'
 GPBI[215,1]='Yemen'
 GPBI[108,1]='Kyrgyz'
 GPBI[92,1]='Iran'
-
-
-
+GPBI[162,1]='Russia'
+GPBI[29,1]='Brunei'
+GPBI[108,1]='Kyrgyzstan'
+GPBI[190,1]='Syria'
+GPBI[174,1]='Slovakia'
+GPBI[136,1]='Burma'
+GPBI[105,1]='South Korea'
 ```
 
 
@@ -237,6 +260,13 @@ Gbolsillo[211,1]='Venezuela'
 Gbolsillo[215,1]='Yemen'
 Gbolsillo[108,1]='Kyrgyz'
 Gbolsillo[92,1]='Iran'
+Gbolsillo[162,1]='Russia'
+Gbolsillo[29,1]='Brunei'
+Gbolsillo[108,1]='Kyrgyzstan'
+Gbolsillo[190,1]='Syria'
+Gbolsillo[174,1]='Slovakia'
+Gbolsillo[136,1]='Burma'
+Gbolsillo[105,1]='South Korea'
 ```
 
 
@@ -294,14 +324,20 @@ cobertura[211,1]='Venezuela'
 cobertura[215,1]='Yemen'
 cobertura[108,1]='Kyrgyz'
 cobertura[92,1]='Iran'
+cobertura[162,1]='Russia'
+cobertura[29,1]='Brunei'
+cobertura[108,1]='Kyrgyzstan'
+cobertura[190,1]='Syria'
+cobertura[174,1]='Slovakia'
+cobertura[136,1]='Burma'
+cobertura[105,1]='South Korea'
 ```
+
 
 
 ```{r}
 write.csv(cobertura,"cobertura.csv", row.names = F)
 ```
-
-
 
 
 

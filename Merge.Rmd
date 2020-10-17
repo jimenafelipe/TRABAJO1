@@ -42,8 +42,3 @@ totalData=merge(totalData,cobertura,all.x = T, all.y = T)
 totalData=merge(totalData,GHealthExp,all.x = T, all.y = T)
 
 ```
-
-```{r}
-totalData=na.omit(totalData)
-```
-

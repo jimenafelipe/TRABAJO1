@@ -1,0 +1,1155 @@
+
+PR3: TRABAJO GRUPAL 
+LINEAS:
+-Jimena Felipe, 20180648 (13-257)
+-Rafael Tang, (260-590)
+-Adriana Ramos, (593-873)
+-Manuel Mayaute, (877-1140)
+```{r}
+Lcovid="https://raw.githubusercontent.com/rafaeltang/EAP-2-ARCHIVOS/master/oficial.csv"
+covid=read.csv(Lcovid,stringsAsFactors = F)
+```
+
+JIMENA FELIPE
+VARIABLE:Domestic general government health expenditure
+ANALISIS UNIVARIADO
+```{r}
+summary(covid$Domestic_general_government_health_expenditure, na.rm = T)
+```
+
+```{r}
+sd(covid$Domestic_general_government_health_expenditure, na.rm = T)
+var(covid$Domestic_general_government_health_expenditure, na.rm = T)
+```
+ANÁLISIS BIVARIADO:
+Domestic general government health expenditure con:
+1. CASES 
+```{r}
+cor.test(x = covid$Domestic_general_government_health_expenditure, y = covid$cases, method = "pearson", use="pairwise.complete.obs")
+```
+
+```{r}
+plot(covid$Domestic_general_government_health_expenditure, covid$cases, 
+     xlab="Domestic general government health expenditure", 
+     ylab="Cases") 
+```
+2. DEADS
+```{r}
+cor.test(x = covid$Domestic_general_government_health_expenditure, y = covid$deads, method = "pearson")
+```
+
+```{r}
+plot(covid$Domestic_general_government_health_expenditure, covid$deads, 
+     xlab="Domestic general government health expenditure", 
+     ylab="Deads")
+```
+
+3. MORTALITY
+```{r}
+cor.test(x = covid$Domestic_general_government_health_expenditure, y = covid$mortality, method = "pearson")
+```
+
+```{r}
+plot(covid$Domestic_general_government_health_expenditure, covid$mortality, 
+     xlab="Domestic general government health expenditure", 
+     ylab="Mortality")
+```
+
+4.DEADS PER 100K
+```{r}
+cor.test(x = covid$Domestic_general_government_health_expenditure, y = covid$deadsPER100k, method = "pearson")
+```
+```{r}
+plot(covid$deadsPER100k, covid$Domestic_general_government_health_expenditure, 
+     xlab="Domestic general government health expenditure", 
+     ylab="Deads per 100k")
+```
+5. CASES PER 100K
+```{r}
+cor.test(x = covid$Domestic_general_government_health_expenditure, y = covid$casesPER100k, method = "pearson")
+```
+```{r}
+plot(covid$Domestic_general_government_health_expenditure, covid$casesPER100k, 
+     xlab="Domestic general government health expenditure", 
+     ylab="Cases per 100k")
+```
+
+
+VARIABLE: Current health expenditure 
+ANALISIS UNIVARIADO 
+```{r}
+summary(covid$Current_health_expenditure)
+```
+
+ANALISIS BIVARIADO
+Current health expenditure con:
+
+1. CASES 
+```{r}
+cor.test(x = covid$Current_health_expenditure, y = covid$cases, method = "pearson")
+```
+```{r}
+plot(covid$Current_health_expenditure, covid$cases, 
+     xlab="Current health expenditure", 
+     ylab="Cases")
+```
+2. DEADS
+```{r}
+cor.test(x = covid$Current_health_expenditure, y = covid$deads, method = "pearson")
+```
+
+```{r}
+plot(covid$Current_health_expenditure, covid$deads, 
+     xlab="Current health expenditure", 
+     ylab="Deads")
+```
+
+3. MORTALITY
+```{r}
+cor.test(x = covid$Current_health_expenditure, y = covid$mortality, method = "pearson")
+```
+
+```{r}
+plot(covid$Current_health_expenditure, covid$mortality, 
+     xlab="Current health expenditure", 
+     ylab="Mortality")
+```
+
+4.DEADS PER 100K
+```{r}
+cor.test(x = covid$Current_health_expenditure, y = covid$deadsPER100k, method = "pearson")
+```
+```{r}
+plot(covid$Current_health_expenditure, covid$deadsPER100k, 
+     xlab="Current health expenditure", 
+     ylab="Deads per 100k")
+```
+5. CASES PER 100K
+```{r}
+cor.test(x = covid$Current_health_expenditure, y = covid$casesPER100k, method = "pearson")
+```
+```{r}
+plot(covid$Current_health_expenditure, covid$casesPER100k, 
+     xlab="Current health expenditure", 
+     ylab="Cases per 100k")
+```
+
+
+
+VARIABLE: Out of pocket health expenditure 
+ANALISIS UNIVARIADO 
+```{r}
+summary(covid$Out_of_pocket_health_expenditure)
+```
+
+ANALISIS BIVARIADO
+Out of pocket health expenditure con:
+
+1. CASES 
+```{r}
+cor.test(x = covid$Out_of_pocket_health_expenditure, y = covid$cases, method = "pearson")
+```
+```{r}
+plot(covid$Out_of_pocket_health_expenditure, covid$cases, 
+     xlab="Out of pocket health expenditure", 
+     ylab="Cases")
+```
+2. DEADS
+```{r}
+cor.test(x = covid$Out_of_pocket_health_expenditure, y = covid$deads, method = "pearson")
+```
+
+```{r}
+plot(covid$Out_of_pocket_health_expenditure, covid$deads, 
+     xlab="Out of pocket health expenditure", 
+     ylab="Deads")
+```
+
+3. MORTALITY
+```{r}
+cor.test(x = covid$Out_of_pocket_health_expenditure, y = covid$mortality, method = "pearson")
+```
+
+```{r}
+plot(covid$Out_of_pocket_health_expenditure, covid$mortality, 
+     xlab="Out of pocket health expenditure", 
+     ylab="Mortality")
+```
+
+4.DEADS PER 100K
+```{r}
+cor.test(x = covid$Out_of_pocket_health_expenditure, y = covid$deadsPER100k, method = "pearson")
+```
+```{r}
+plot(covid$Out_of_pocket_health_expenditure, covid$deadsPER100k, 
+     xlab="Out of pocket health expenditure", 
+     ylab="Deads per 100k")
+```
+5. CASES PER 100K
+```{r}
+cor.test(x = covid$Out_of_pocket_health_expenditure, y = covid$casesPER100k, method = "pearson")
+```
+```{r}
+plot(covid$Out_of_pocket_health_expenditure, covid$casesPER100k, 
+     xlab="Out of pocket health expenditure", 
+     ylab="Cases per 100k")
+```
+
+
+
+VARIABLE: UHC service coverage index 
+ANALISIS UNIVARIADO 
+```{r}
+summary(covid$UHC_service_coverage_index)
+```
+
+ANALISIS BIVARIADO
+UHC service coverage index con:
+
+1. CASES 
+```{r}
+cor.test(x = covid$UHC_service_coverage_index, y = covid$cases, method = "pearson")
+```
+```{r}
+plot(covid$UHC_service_coverage_index, covid$cases, 
+     xlab="UHC service coverage index", 
+     ylab="Cases")
+```
+2. DEADS
+```{r}
+cor.test(x = covid$UHC_service_coverage_index, y = covid$deads, method = "pearson")
+```
+
+```{r}
+plot(covid$UHC_service_coverage_index, covid$deads, 
+     xlab="UHC service coverage index", 
+     ylab="Deads")
+```
+
+3. MORTALITY
+```{r}
+cor.test(x = covid$UHC_service_coverage_index, y = covid$mortality, method = "pearson")
+```
+
+```{r}
+plot(covid$UHC_service_coverage_index, covid$mortality, 
+     xlab="UHC service coverage index", 
+     ylab="Mortality")
+```
+
+4.DEADS PER 100K
+```{r}
+cor.test(x = covid$UHC_service_coverage_index, y = covid$deadsPER100k, method = "pearson")
+```
+```{r}
+plot(covid$UHC_service_coverage_index, covid$deadsPER100k, 
+     xlab="UHC service coverage index", 
+     ylab="Deads per 100k")
+```
+5. CASES PER 100K
+```{r}
+cor.test(x = covid$UHC_service_coverage_index, y = covid$casesPER100k, method = "pearson")
+```
+```{r}
+plot(covid$UHC_service_coverage_index, covid$casesPER100k, 
+     xlab="UHC service coverage index", 
+     ylab="Cases per 100k")
+```
+
+
+RAFAEL TANG
+
+VARIABLE: Gasto gubernamental en salud
+ANALISIS UNIVARIADO
+```{r}
+summary(covid$GovernmentHealthExp.P.C)
+```
+
+ANALSIS BIVARIADO
+
+1.CASES
+```{r}
+cor.test(x = covid$GovernmentHealthExp.P.C, y = covid$cases, method = "pearson")
+```
+
+```{r}
+plot(covid$cases, covid$GovernmentHealthExp.P.C, 
+     xlab="Government health expenditure", 
+     ylab="Cases")
+```
+
+2.DEADS
+```{r}
+cor.test(x = covid$GovernmentHealthExp.P.C, y = covid$deads, method = "pearson")
+```
+
+```{r}
+plot(covid$GovernmentHealthExp.P.C, covid$deads, 
+     xlab="Government health expenditure", 
+     ylab="Deads")
+```
+
+3.MORTALITY
+```{r}
+cor.test(x = covid$GovernmentHealthExp.P.C, y = covid$mortality, method = "pearson")
+```
+
+```{r}
+plot(covid$GovernmentHealthExp.P.C, covid$mortality, 
+     xlab="Government health expenditure", 
+     ylab="mortality")
+```
+
+
+4.DEADS PER 100K
+```{r}
+cor.test(x = covid$Domestic_general_government_health_expenditure, y = covid$deadsPER100k, method = "pearson")
+```
+
+```{r}
+plot(covid$deadsPER100k, covid$GovernmentHealthExp.P.C, 
+     xlab="Government health expenditure", 
+     ylab="Deads per 100k")
+```
+
+5. CASES PER 100K
+```{r}
+cor.test(x = covid$GovernmentHealthExp.P.C, y = covid$casesPER100k, method = "pearson")
+```
+
+```{r}
+plot(covid$GovernmentHealthExp.P.C, covid$casesPER100k, 
+     xlab="Government health expenditure", 
+     ylab="Cases per 100k")
+```
+
+
+
+#VARIABLE: Revenue-Ingresos
+ANALISIS UNIVARIADO
+```{r}
+summary(covid$Revenue)
+```
+
+ANALSIS BIVARIADO
+
+1.CASES
+```{r}
+cor.test(x = covid$Revenue, y = covid$cases, method = "pearson")
+```
+
+```{r}
+plot(covid$cases, covid$Revenue, 
+     xlab="Revenue", 
+     ylab="Cases")
+```
+
+2.DEADS
+```{r}
+cor.test(x = covid$Revenue, y = covid$deads, method = "pearson")
+```
+
+```{r}
+plot(covid$GovernmentHealthExp.P.C, covid$deads, 
+     xlab="Revenue", 
+     ylab="Deads")
+```
+
+3.MORTALITY
+```{r}
+cor.test(x = covid$Revenue, y = covid$mortality, method = "pearson")
+```
+
+```{r}
+plot(covid$Revenue, covid$mortality, 
+     xlab="Revenue", 
+     ylab="mortality")
+```
+
+
+4.DEADS PER 100K
+```{r}
+cor.test(x = covid$Revenue, y = covid$deadsPER100k, method = "pearson")
+```
+
+```{r}
+plot(covid$deadsPER100k, covid$GovernmentHealthExp.P.C, 
+     xlab="Revenue", 
+     ylab="Deads per 100k")
+```
+
+5. CASES PER 100K
+```{r}
+cor.test(x = covid$Revenue, y = covid$casesPER100k, method = "pearson")
+```
+
+```{r}
+plot(covid$Revenue, covid$casesPER100k, 
+     xlab="Revenue", 
+     ylab="Cases per 100k")
+```
+
+
+
+#VARIABLE: Expenditure-gasto
+
+
+ANALISIS UNIVARIADO
+```{r}
+summary(covid$Expenditure)
+```
+
+ANALSIS BIVARIADO
+
+1.CASES
+```{r}
+cor.test(x = covid$Expenditure, y = covid$cases, method = "pearson")
+```
+
+```{r}
+plot(covid$cases, covid$Expenditure, 
+     xlab="Expenditure", 
+     ylab="Cases")
+```
+
+2.DEADS
+```{r}
+cor.test(x = covid$Expenditure, y = covid$deads, method = "pearson")
+```
+
+```{r}
+plot(covid$GovernmentHealthExp.P.C, covid$deads, 
+     xlab="Expenditure", 
+     ylab="Deads")
+```
+
+3.MORTALITY
+```{r}
+cor.test(x = covid$Expenditure, y = covid$mortality, method = "pearson")
+```
+
+```{r}
+plot(covid$Expenditure, covid$mortality, 
+     xlab="Expenditure", 
+     ylab="mortality")
+```
+
+
+4.DEADS PER 100K
+```{r}
+cor.test(x = covid$Expenditure, y = covid$deadsPER100k, method = "pearson")
+```
+
+```{r}
+plot(covid$deadsPER100k, covid$Expenditure, 
+     xlab="Expenditure", 
+     ylab="Deads per 100k")
+```
+
+5. CASES PER 100K
+```{r}
+cor.test(x = covid$Expenditure, y = covid$casesPER100k, method = "pearson")
+```
+
+```{r}
+plot(covid$Expenditure, covid$casesPER100k, 
+     xlab="Revenue", 
+     ylab="Cases per 100k")
+```
+
+#VARIABLE: surplus-superavit
+Cantidad de ingresos que supera los gastos
+
+ANALISIS UNIVARIADO
+```{r}
+summary(covid$Surplus)
+```
+
+ANALSIS BIVARIADO
+
+1.CASES
+```{r}
+cor.test(x = covid$Surplus, y = covid$cases, method = "pearson")
+```
+
+```{r}
+plot(covid$cases, covid$Surplus, 
+     xlab="Surplus", 
+     ylab="Cases")
+```
+
+2.DEADS
+```{r}
+cor.test(x = covid$Surplus, y = covid$deads, method = "pearson")
+```
+
+```{r}
+plot(covid$Surplus, covid$deads, 
+     xlab="Surplus", 
+     ylab="Deads")
+```
+
+3.MORTALITY
+```{r}
+cor.test(x = covid$Surplus, y = covid$mortality, method = "pearson")
+```
+
+```{r}
+plot(covid$Surplus, covid$mortality, 
+     xlab="Surplus", 
+     ylab="mortality")
+```
+
+
+4.DEADS PER 100K
+```{r}
+cor.test(x = covid$Surplus, y = covid$deadsPER100k, method = "pearson")
+```
+
+```{r}
+plot(covid$deadsPER100k, covid$Surplus, 
+     xlab="Surplus", 
+     ylab="Deads per 100k")
+```
+
+5. CASES PER 100K
+```{r}
+cor.test(x = covid$Surplus, y = covid$casesPER100k, method = "pearson")
+```
+
+```{r}
+plot(covid$Surplus, covid$casesPER100k, 
+     xlab="Surplus", 
+     ylab="Cases per 100k")
+```
+
+#VARIABLE: Surplus percent - Porcentaje superavit
+porcentaje de ingresos que superan los gastos
+
+ANALISIS UNIVARIADO
+```{r}
+summary(covid$SurplusPercent)
+```
+
+ANALSIS BIVARIADO
+
+1.CASES
+```{r}
+cor.test(x = covid$SurplusPercent, y = covid$cases, method = "pearson")
+```
+
+```{r}
+plot(covid$cases, covid$SurplusPercent, 
+     xlab="Surplus Percent", 
+     ylab="Cases")
+```
+
+2.DEADS
+```{r}
+cor.test(x = covid$SurplusPercent, y = covid$deads, method = "pearson")
+```
+
+```{r}
+plot(covid$SurplusPercent, covid$deads, 
+     xlab="Surplus Percent", 
+     ylab="Deads")
+```
+
+3.MORTALITY
+```{r}
+cor.test(x = covid$SurplusPercent, y = covid$mortality, method = "pearson")
+```
+
+```{r}
+plot(covid$SurplusPercent, covid$mortality, 
+     xlab="Surplus Percent", 
+     ylab="mortality")
+```
+
+
+4.DEADS PER 100K
+```{r}
+cor.test(x = covid$SurplusPercent, y = covid$deadsPER100k, method = "pearson")
+```
+
+```{r}
+plot(covid$deadsPER100k, covid$SurplusPercent, 
+     xlab="SurplusPercent", 
+     ylab="Deads per 100k")
+```
+
+5. CASES PER 100K
+```{r}
+cor.test(x = covid$SurplusPercent, y = covid$casesPER100k, method = "pearson")
+```
+
+```{r}
+plot(covid$SurplusPercent, covid$casesPER100k, 
+     xlab="SurplusPercent", 
+     ylab="Cases per 100k")
+```
+
+
+## ADRIANA RAMOS 
+
+### VARIABLE: IHDI
+
+ANALISIS UNIVARIADO
+```{r}
+summary(covid$ihdi)
+```
+ANALSIS BIVARIADO
+
+1. Cases
+
+```{r}
+cor.test(x = covid$ihdi, y = covid$cases, method = "pearson")
+```
+```{r}
+plot(covid$cases, covid$ihdi, 
+     xlab="IHDI", 
+     ylab="Cases")
+```
+
+2. Deads
+
+```{r}
+cor.test(x = covid$ihdi, y = covid$deads, method = "pearson")
+```
+
+```{r}
+plot(covid$deads, covid$ihdi, 
+     xlab="IHDI", 
+     ylab="Deads")
+```
+
+
+3. Mortality
+
+```{r}
+cor.test(x = covid$ihdi, y = covid$mortality, method = "pearson")
+```
+```{r}
+plot(covid$mortality, covid$ihdi, 
+     xlab="IHDI", 
+     ylab="Mortality")
+```
+4. Deads per 100k
+
+```{r}
+cor.test(x = covid$ihdi, y = covid$deadsPER100k, method = "pearson")
+```
+
+```{r}
+plot(covid$deadsPER100k, covid$ihdi, 
+     xlab="IHDI", 
+     ylab="Deaths per 100k")
+```
+
+5. Cases per 100k
+
+```{r}
+cor.test(x = covid$ihdi, y = covid$casesPER100k, method = "pearson")
+```
+
+```{r}
+plot(covid$casesPER100k, covid$ihdi, 
+     xlab="IHDI", 
+     ylab="Cases per 100k")
+```
+### VARIABLE: HDI
+
+```{r}
+summary(covid$hdi)
+```
+
+ANALSIS BIVARIADO
+
+1. Cases
+
+```{r}
+cor.test(x = covid$hdi, y = covid$cases, method = "pearson")
+```
+
+```{r}
+plot(covid$cases, covid$hdi, 
+     xlab="HDI", 
+     ylab="Cases")
+```
+
+2. Deads
+
+```{r}
+cor.test(x = covid$hdi, y = covid$deads, method = "pearson")
+```
+
+```{r}
+plot(covid$deads, covid$hdi, 
+     xlab="HDI", 
+     ylab="Deaths")
+```
+
+3. Mortality
+
+```{r}
+cor.test(x = covid$hdi, y = covid$mortality, method = "pearson")
+```
+
+```{r}
+plot(covid$mortality, covid$hdi, 
+     xlab="HDI", 
+     ylab="Mortality")
+```
+
+4. Deads per 100k
+
+```{r}
+cor.test(x = covid$hdi, y = covid$deadsPER100k, method = "pearson")
+```
+
+```{r}
+plot(covid$deadsPER100k, covid$hdi, 
+     xlab="HDI", 
+     ylab="Deaths per 100k")
+```
+
+5. Cases per 100k
+
+```{r}
+cor.test(x = covid$hdi, y = covid$casesPER100k, method = "pearson")
+```
+
+```{r}
+plot(covid$casesPER100k, covid$hdi, 
+     xlab="HDI", 
+     ylab="Cases per 100k")
+```
+
+### VARIABLE: PBI
+ANALISIS UNIVARIADO
+
+```{r}
+summary(covid$pbi)
+```
+
+ANALISIS BIVARIADO
+
+1. Cases
+
+```{r}
+cor.test(x = covid$pbi, y = covid$cases, method = "pearson")
+```
+
+```{r}
+plot(covid$cases, covid$pbi, 
+     xlab="PBI", 
+     ylab="Cases")
+
+```
+
+2. Deads
+
+```{r}
+cor.test(x = covid$pbi, y = covid$deads, method = "pearson")
+```
+
+```{r}
+plot(covid$deads, covid$pbi, 
+     xlab="PBI", 
+     ylab="Deaths")
+```
+
+
+3. Mortality
+
+```{r}
+cor.test(x = covid$pbi, y = covid$mortality, method = "pearson")
+```
+
+```{r}
+plot(covid$mortality, covid$pbi, 
+     xlab="PBI", 
+     ylab="Mortality")
+```
+
+
+4. Deads per 100k
+
+```{r}
+cor.test(x = covid$pbi, y = covid$deadsPER100k, method = "pearson")
+```
+
+```{r}
+plot(covid$deadsPER100k, covid$pbi, 
+     xlab="PBI", 
+     ylab="Deaths per 100k")
+```
+
+
+5. Cases per 100k
+
+```{r}
+cor.test(x = covid$pbi, y = covid$casesPER100k, method = "pearson")
+```
+
+```{r}
+plot(covid$casesPER100k, covid$pbi, 
+     xlab="PBI", 
+     ylab="Cases per 100k")
+```
+
+
+### VARIABLE: Corporate Percent
+ANALISIS UNIVARIADO
+
+```{r}
+summary(covid$CorporatePercent)
+```
+
+ANALISIS BIVARIADO
+
+1. Cases
+
+```{r}
+cor.test(x = covid$CorporatePercent, y = covid$cases, method = "pearson")
+```
+
+```{r}
+plot(covid$cases, covid$CorporatePercent, 
+     xlab="Corporate tax percent", 
+     ylab="Cases")
+
+```
+
+2. Deads
+
+```{r}
+cor.test(x = covid$CorporatePercent, y = covid$deads, method = "pearson")
+```
+
+```{r}
+plot(covid$deads, covid$CorporatePercent, 
+     xlab="Corporate tax percent", 
+     ylab="Deaths")
+```
+
+
+3. Mortality
+
+```{r}
+cor.test(x = covid$CorporatePercent, y = covid$mortality, method = "pearson")
+```
+
+```{r}
+plot(covid$mortality, covid$CorporatePercent, 
+     xlab="Corporate tax percent", 
+     ylab="Mortality")
+```
+
+
+4. Deads per 100k
+
+```{r}
+cor.test(x = covid$CorporatePercent, y = covid$deadsPER100k, method = "pearson")
+```
+
+```{r}
+plot(covid$deadsPER100k, covid$CorporatePercent, 
+     xlab="Corporate tax percent", 
+     ylab="Deaths per 100k")
+```
+
+
+5. Cases per 100k
+
+```{r}
+cor.test(x = covid$CorporatePercent, y = covid$casesPER100k, method = "pearson")
+```
+
+```{r}
+plot(covid$casesPER100k, covid$CorporatePercent, 
+     xlab="Corporate tax percent", 
+     ylab="Cases per 100k")
+```
+
+
+
+MANUEL MAYAUTE
+VARIABLE: IncomeHighPercent
+
+ANALISIS UNIVARIADO
+```{r}
+summary(covid$IncomeHighPercent)
+```
+
+ANALSIS BIVARIADO
+
+```{r}
+covid[c(20:23)]=lapply(covid[c(2:13)], as.numeric)
+
+```
+
+1.CASES
+```{r}
+cor.test(x = covid$IncomeHighPercent, y = covid$cases, method = "pearson")
+```
+
+```{r}
+plot(covid$cases, covid$IncomeHighPercent, 
+     xlab="IncomeHighPercent", 
+     ylab="Cases")
+```
+
+2.DEADS
+```{r}
+cor.test(x = covid$IncomeHighPercent, y = covid$deads, method = "pearson")
+```
+
+```{r}
+plot(covid$IncomeHighPercent, covid$deads, 
+     xlab="Income", 
+     ylab="Deads")
+```
+
+3.MORTALITY
+```{r}
+cor.test(x = covid$IncomeHighPercent, y = covid$mortality, method = "pearson")
+```
+
+```{r}
+plot(covid$IncomeHighPercent, covid$mortality, 
+     xlab="Income", 
+     ylab="mortality")
+```
+
+
+4.DEADS PER 100K
+```{r}
+cor.test(x = covid$IncomeHighPercent, y = covid$deadsPER100k, method = "pearson")
+```
+
+```{r}
+plot(covid$deadsPER100k, covid$IncomeHighPercent, 
+     xlab="Income", 
+     ylab="Deads per 100k")
+```
+
+5. CASES PER 100K
+```{r}
+cor.test(x = covid$IncomeHighPercent, y = covid$casesPER100k, method = "pearson")
+```
+
+```{r}
+plot(covid$IncomeHighPercent, covid$casesPER100k, 
+     xlab="Income", 
+     ylab="Cases per 100k")
+```
+
+
+dr density
+#VARIABLE: doctors_density
+Densidad de doctores
+
+ANALISIS UNIVARIADO
+```{r}
+summary(covid$doctors_density)
+```
+
+ANALISIS BIVARIADO
+
+1.CASES
+```{r}
+cor.test(x = covid$doctors_density, y = covid$cases, method = "pearson")
+```
+
+```{r}
+plot(covid$cases, covid$doctors_density, 
+     xlab="Doctors", 
+     ylab="Cases")
+```
+
+2.DEADS
+```{r}
+cor.test(x = covid$doctors_density, y = covid$deads, method = "pearson")
+```
+
+```{r}
+plot(covid$doctors_density, covid$deads, 
+     xlab="Doctors", 
+     ylab="Deads")
+```
+
+3.MORTALITY
+```{r}
+cor.test(x = covid$doctors_density, y = covid$mortality, method = "pearson")
+```
+
+```{r}
+plot(covid$doctors_density, covid$mortality, 
+     xlab="Doctors", 
+     ylab="mortality")
+```
+
+
+4.DEADS PER 100K
+```{r}
+cor.test(x = covid$doctors_density, y = covid$deadsPER100k, method = "pearson")
+```
+
+```{r}
+plot(covid$deadsPER100k, covid$doctors_density, 
+     xlab="Doctors", 
+     ylab="Deads per 100k")
+```
+
+5. CASES PER 100K
+```{r}
+cor.test(x = covid$doctors_density, y = covid$casesPER100k, method = "pearson")
+```
+
+```{r}
+plot(covid$doctors_density, covid$casesPER100k, 
+     xlab="Doctors", 
+     ylab="Cases per 100k")
+```
+
+#VARIABLE: vat percent
+porcentaje de ingresos que superan los gastos
+
+ANALISIS UNIVARIADO
+```{r}
+summary(covid$VATpercent)
+```
+
+ANALSIS BIVARIADO
+
+1.CASES
+```{r}
+cor.test(x = covid$VATpercent, y = covid$cases, method = "pearson")
+```
+
+```{r}
+plot(covid$cases, covid$VATpercent, 
+     xlab="vat Percent", 
+     ylab="Cases")
+```
+
+2.DEADS
+```{r}
+cor.test(x = covid$VATpercent, y = covid$deads, method = "pearson")
+```
+
+```{r}
+plot(covid$VATpercent, covid$deads, 
+     xlab="vat", 
+     ylab="Deads")
+```
+
+3.MORTALITY
+```{r}
+cor.test(x = covid$VATpercent, y = covid$mortality, method = "pearson")
+```
+
+```{r}
+plot(covid$VATpercent, covid$mortality, 
+     xlab="vat Percent", 
+     ylab="mortality")
+```
+
+
+4.DEADS PER 100K
+```{r}
+cor.test(x = covid$VATpercent, y = covid$deadsPER100k, method = "pearson")
+```
+
+```{r}
+plot(covid$deadsPER100k, covid$VATPercent, 
+     xlab="vatPercent", 
+     ylab="Deads per 100k")
+```
+
+
+```{r}
+#5. CASES PER 100K
+
+cor.test(x = covid$VATpercent, y = covid$casesPER100k, method = "pearson")
+```
+
+```{r}
+plot(covid$VATpercent, covid$casesPER100k, 
+     xlab="VATPercent", 
+     ylab="Cases per 100k")
+```
+
+#VARIABLE: nursing_density
+Densidad de doctores
+ANALISIS UNIVARIADO
+
+```{r}
+
+summary(covid$nursing_density)
+```
+
+ANALSIS BIVARIADO
+
+1.CASES
+```{r}
+cor.test(x = covid$nursing_density, y = covid$cases, method = "pearson")
+```
+
+```{r}
+plot(covid$cases, covid$nursing_density, 
+     xlab="nursing density", 
+     ylab="Cases")
+```
+
+2.DEADS
+```{r}
+cor.test(x = covid$nursing_density, y = covid$deads, method = "pearson")
+```
+
+```{r}
+plot(covid$nursing_density, covid$deads, 
+     xlab="nursing", 
+     ylab="Deads")
+```
+
+3.MORTALITY
+
+```{r}
+cor.test(x = covid$nursing_density, y = covid$mortality, method = "pearson")
+```
+
+```{r}
+plot(covid$nursing_density, covid$mortality, 
+     xlab="nursing", 
+     ylab="mortality")
+```
+
+
+4.DEADS PER 100K
+```{r}
+cor.test(x = covid$nursing_density, y = covid$deadsPER100k, method = "pearson")
+```
+
+```{r}
+plot(covid$deadsPER100k, covid$nursing_density, 
+     xlab="Doctors", 
+     ylab="Deads per 100k")
+```
+
+5. CASES PER 100K
+```{r}
+cor.test(x = covid$nursing_density, y = covid$casesPER100k, method = "pearson")
+```
+
+```{r}
+plot(covid$nursing_density, covid$casesPER100k, 
+     xlab="nursing density", 
+     ylab="Cases per 100k")
+```
+
+
+
+
+
